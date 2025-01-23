@@ -11,7 +11,7 @@ import { TestimonialControllers } from './testimonial.controller'
 const router = express.Router()
 
 router.post(
-  '/create',
+  '/',
   auth(USER_ROLE.super_admin, USER_ROLE.admin),
   validateRequest(createTestimonialSValidationschema),
   TestimonialControllers.createTestimonial,
