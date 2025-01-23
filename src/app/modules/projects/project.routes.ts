@@ -11,7 +11,7 @@ import {
 const router = express.Router()
 
 router.post(
-  '/create',
+  '/',
   auth(USER_ROLE.super_admin, USER_ROLE.admin),
   validateRequest(createProjectValidationSchema),
   ProjectControllers.createProject,

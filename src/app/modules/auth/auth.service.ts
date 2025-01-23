@@ -6,28 +6,7 @@ import AppError from '../../errors/AppError'
 import { TLoginUser } from './auth.interface'
 import { createToken, verifyToken } from './auth.utils'
 import { User } from '../users/user.model'
-import { IUser } from '../users/user.interface'
 import { sendEmail } from '../../utils/sendEmail'
-
-const signupUser = async (payload: IUser) => {
-  const user = await User.isUserExistsByEmail(payload?.email)
-
-  if (user) {
-    throw new AppError(httpStatus.BAD_REQUEST, 'This user is already exists !')
-  }
-
-  const newUser = await User.create(payload)
-
-  const result = {
-    _id: newUser._id,
-    name: newUser.name,
-    email: newUser.email,
-    contactNumber: newUser.contactNumber,
-    role: newUser.role,
-  }
-
-  return result
-}
 
 const loginUser = async (payload: TLoginUser) => {
   // checking if the user is exist
@@ -222,7 +201,7 @@ const forgetPassword = async (userEmail: string) => {
         : config.frontend_url.local
     }` + `/reset-password?email=${user.email}&token=${resetToken}`
   const subject = 'Reset Your Password'
-
+  console.log(resetLink, subject)
   await sendEmail(
     user.email,
     subject,
@@ -315,7 +294,6 @@ const forgetPassword = async (userEmail: string) => {
   `,
   )
 
-  // console.log(resetUILink)
   return resetLink
 }
 
@@ -348,8 +326,6 @@ const resetPassword = async (
     config.jwt.access_secret as string,
   ) as JwtPayload
 
-  //localhost:3000?id=A-0001&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBLTAwMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDI4NTA2MTcsImV4cCI6MTcwMjg1MTIxN30.-T90nRaz8-KouKki1DkCSMAbsHyb9yDi0djZU3D6QO4
-
   if (payload.email !== decoded.email) {
     // console.log(payload.email, decoded.email)
     throw new AppError(httpStatus.FORBIDDEN, 'You are forbidden!')
@@ -368,7 +344,6 @@ const resetPassword = async (
     },
     {
       password: newHashedPassword,
-      needsPasswordChange: false,
       passwordChangedAt: new Date(),
     },
   )
@@ -376,7 +351,6 @@ const resetPassword = async (
 }
 
 export const AuthServices = {
-  signupUser,
   loginUser,
   changePassword,
   refreshToken,

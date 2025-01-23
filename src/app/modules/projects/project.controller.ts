@@ -9,18 +9,18 @@ const createProject = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Project is created succesfully',
+    message: 'Product is created succesfully',
     data: result,
   })
 })
 
 const getAllProjects = catchAsync(async (req, res) => {
-  const result = await ProjectServices.getAllProjects()
+  const result = await ProjectServices.getAllProjects(req.query)
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Projects are retrieved succesfully',
+    message: 'Products are retrieved succesfully',
     data: result,
   })
 })
@@ -31,7 +31,7 @@ const getSingleProject = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Project is retrieved succesfully',
+    message: 'Product is retrieved succesfully',
     data: result,
   })
 })
@@ -42,7 +42,7 @@ const updateProject = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Project is updated succesfully',
+    message: 'Product is updated succesfully',
     data: result,
   })
 })
@@ -54,7 +54,7 @@ const deleteProject = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Project is deleted succesfully',
+    message: 'Product is deleted succesfully',
     data: result,
   })
 })

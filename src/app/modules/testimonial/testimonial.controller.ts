@@ -15,7 +15,7 @@ const createTestimonial = catchAsync(async (req, res) => {
 })
 
 const getAllTestimonials = catchAsync(async (req, res) => {
-  const result = await TestimonialServices.getAllTestimonials()
+  const result = await TestimonialServices.getAllTestimonials(req.query)
 
   sendResponse(res, {
     statusCode: httpStatus.OK,

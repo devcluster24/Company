@@ -34,6 +34,6 @@ export default {
 
   sendMail: {
     email: process.env.EMAIL_ADDRESS,
-    email_app_password: process.env.EMAIL_APP_PASSWORD,
+    EMAIL_APP_PASS: process.env.EMAIL_APP_PASS,
   },
 }
