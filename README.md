@@ -1,8 +1,8 @@
-# Mobassher Portfolio Server
+# DevCluster Server
 
 ## Deployment
 
-- **Live Link**: [Live server link](https://mobassher-portfolio-server.vercel.app)
+- **Live Link**: [Live server link]()
 
 ## Postman API Documentation:
 
@@ -56,7 +56,3 @@ Contributions are welcome! If you find any bugs or want to suggest improvements,
 ## License
 
 MIT License
-
-## More Projects and Information
-
-👉 Explore additional projects and find out more about my work on my portfolio website: [Md Mobassher Hossain](https://mobassher.vercel.app)
