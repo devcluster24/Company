@@ -5,17 +5,6 @@ import catchAsync from '../../utils/catchAsync'
 import sendResponse from '../../utils/sendResponse'
 import { AuthServices } from './auth.service'
 
-const signupUser = catchAsync(async (req, res) => {
-  const result = await AuthServices.signupUser(req.body)
-
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'User is created succesfully',
-    data: result,
-  })
-})
-
 const loginUser = catchAsync(async (req, res) => {
   const result = await AuthServices.loginUser(req.body)
   const { refreshToken, accessToken } = result
@@ -77,7 +66,7 @@ const resetPassword = catchAsync(async (req, res) => {
   const token = req.headers.authorization
 
   if (!token) {
-    throw new AppError(httpStatus.BAD_REQUEST, 'Something went wrong !')
+    throw new AppError(httpStatus.UNAUTHORIZED, 'Token is not valid!')
   }
 
   const result = await AuthServices.resetPassword(req.body, token)
@@ -90,7 +79,6 @@ const resetPassword = catchAsync(async (req, res) => {
 })
 
 export const AuthControllers = {
-  signupUser,
   loginUser,
   changePassword,
   refreshToken,

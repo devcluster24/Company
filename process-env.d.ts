@@ -21,6 +21,6 @@ declare namespace NodeJS {
     SUPER_ADMIN_EMAIL: string
     SUPER_ADMIN_PASS: string
     EMAIL_ADDRESS: string
-    EMAIL_APP_PASSWORD: string
+    EMAIL_APP_PASS: string
   }
 }

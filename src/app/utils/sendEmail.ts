@@ -9,7 +9,7 @@ export const sendEmail = async (to: string, subject: string, html: string) => {
     auth: {
       // TODO: replace `user` and `pass` values from <https://forwardemail.net>
       user: config.sendMail.email,
-      pass: config.sendMail.email_app_password,
+      pass: config.sendMail.EMAIL_APP_PASS,
     },
   })
 

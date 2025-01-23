@@ -4,15 +4,8 @@ import { AuthValidation } from './auth.validation'
 import { AuthControllers } from './auth.controller'
 import auth from '../../middlewares/auth'
 import { USER_ROLE } from '../users/user.constant'
-import { UserValidation } from '../users/user.validation'
 
 const router = express.Router()
-
-router.post(
-  '/register',
-  validateRequest(UserValidation.signupValidationSchema),
-  AuthControllers.signupUser,
-)
 
 router.post(
   '/login',
