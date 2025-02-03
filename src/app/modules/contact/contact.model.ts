@@ -13,6 +13,9 @@ const contactSchema = new Schema<IContact>({
   phone: {
     type: String,
   },
+  product: {
+    type: String,
+  },
   subject: {
     type: String,
     required: true,

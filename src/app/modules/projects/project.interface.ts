@@ -3,4 +3,7 @@ export interface IProject {
   logo: string
   liveLink: string
   position: number
+  description?: string
+  technologies?: string[]
+  banner?: string
 }
