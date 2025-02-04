@@ -7,6 +7,9 @@ const projectSchema = new Schema<IProject>(
     logo: { type: String, required: true },
     liveLink: { type: String, required: true },
     position: { type: Number, required: true },
+    description: { type: String },
+    technologies: [{ type: String }],
+    banner: { type: String },
   },
   { timestamps: true },
 )
